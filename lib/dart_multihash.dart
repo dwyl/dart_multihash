@@ -36,29 +36,30 @@ Uint8List encode(String hashType, Uint8List digest, int? length) {
 
 /// Decodes an array of bytes into a multihash object.
 MultihashInfo decode(Uint8List bytes) {
+
   // Check if the array of bytes is long enough (has to have hash function type, length of digest and digest)
   if (bytes.length < 3) {
-    throw Exception('Multihash must be greater than 3 bytes.');
+    throw RangeError('Multihash must be greater than 3 bytes.');
   }
 
   // Decode code of hash function type
   var decodedCode = decodeVarint(bytes, null);
   if (!supportedHashCodes.contains(decodedCode.res)) {
-    throw Exception('Multihash unknown function code: 0x${decodedCode.res.toRadixString(16)}');
+    throw UnsupportedError('Multihash unknown function code: 0x${decodedCode.res.toRadixString(16)}');
   }
 
   bytes = bytes.sublist(decodedCode.numBytesRead);
 
   // Decode length of digest
   final decodedLen = decodeVarint(bytes, null);
-  if (decodedLen.res < 0) {
-    throw Exception('Multihash invalid length: ${decodedLen.res}');
+  if (decodedLen.res <= 0) {
+    throw RangeError('Multihash invalid length: ${decodedLen.res}');
   }
 
   // Get digest
   bytes = bytes.sublist(decodedLen.numBytesRead);
   if (bytes.length != decodedLen.res) {
-    throw Exception('Multihash inconsistent length');
+    throw RangeError('Multihash inconsistent length with digest\'s length.');
   }
 
   // Fetch name of hash function type referring to the code
