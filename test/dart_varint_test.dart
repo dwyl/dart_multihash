@@ -1,13 +1,7 @@
-import 'dart:convert';
-import 'package:crypto/crypto.dart';
-import 'package:dart_multihash/src/models.dart';
 import 'package:dart_multihash/src/varintUtils.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:collection/collection.dart';
-
-import 'package:dart_multihash/dart_multihash.dart';
 
 void main() {
   test('encoding varint', () {
@@ -16,8 +10,7 @@ void main() {
 
     Uint8List output = encodeVarint(value);
 
-    var eq = const ListEquality().equals;
-    expect(eq(expected_output, output), true);
+    expect(listEquals(expected_output, output), true);
   });
 
   test('decoding varint', () {

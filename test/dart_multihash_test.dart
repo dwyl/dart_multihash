@@ -5,7 +5,6 @@ import 'package:dart_multihash/src/models.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:collection/collection.dart';
 
 import 'package:dart_multihash/dart_multihash.dart';
 
@@ -22,7 +21,8 @@ void main() {
     expect(decoded_sha256.code, equals(0x12));
 
     // blake2b-512 - 512 bits
-    Uint8List blake2b_512_array = Uint8List.fromList(hex.decode('c0e40240d91ae0cb0e48022053ab0f8f0dc78d28593d0f1c13ae39c9b169c136a779f21a0496337b6f776a73c1742805c1cc15e792ddb3c92ee1fe300389456ef3dc97e2'));
+    Uint8List blake2b_512_array = Uint8List.fromList(hex.decode(
+        'c0e40240d91ae0cb0e48022053ab0f8f0dc78d28593d0f1c13ae39c9b169c136a779f21a0496337b6f776a73c1742805c1cc15e792ddb3c92ee1fe300389456ef3dc97e2'));
     MultihashInfo decoded_blake2b_512 = decode(blake2b_512_array);
     expect(decoded_blake2b_512.hashFunctionName, equals('blake2b-512'));
     expect(decoded_blake2b_512.length, equals(0x40));
@@ -39,8 +39,7 @@ void main() {
     Uint8List encodedObj = encode('sha2-256', inputByteArray, null);
     MultihashInfo decodedObj = decode(encodedObj);
 
-    var eq = const ListEquality().equals;
-    expect(eq(decodedObj.digest, inputByteArray), true);
+    expect(listEquals(decodedObj.digest, inputByteArray), true);
   });
 
   test('encoding with an unsupported hash function type', () {
