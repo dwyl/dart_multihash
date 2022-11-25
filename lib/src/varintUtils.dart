@@ -40,7 +40,7 @@ DecodedVarInt decodeVarint(Uint8List buf, int? nOffset) {
 
   do {
     if (counter >= l || shift > 49) {
-      throw RangeError('Could not decode varint');
+      throw RangeError('Could not decode varint.');
     }
 
     b = buf[counter++];
