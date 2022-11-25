@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
-import 'package:dart_cid/src/models.dart';
-import 'package:dart_cid/src/varintUtils.dart';
+import 'package:dart_multihash/src/models.dart';
+import 'package:dart_multihash/src/varintUtils.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:collection/collection.dart';
 
-import 'package:dart_cid/dart_multihash.dart';
+import 'package:dart_multihash/dart_multihash.dart';
 
 void main() {
   test('encoding varint', () {

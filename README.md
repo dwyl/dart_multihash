@@ -11,31 +11,99 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# dart_multihash
 
-## Features
+This is an implementation of the 
+[Multihash](https://github.com/multiformats/multihash)
+standard in Dart.
+This package provides an extensible representation of cryptographic hashes.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+# Install
+To install `dart_multihash`, simply run the following command.
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```elixir
+flutter pub add dart_multihash
 ```
 
-## Additional information
+# Usage
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This package simply encodes and decodes
+hashes with the Multihash standard. 
+This is a low-level library. 
+So bring your own digest.
+To create hashes, you will most likely
+need to use a package
+like [`crypto`](https://pub.dev/packages/crypto)
+to hash a given input.
 
-// using Uint8List because https://stackoverflow.com/questions/69090275/uint8list-vs-listint-what-is-the-difference/69091484#69091484
+Here's the standard use of `dart_multihash`,
+using the `encode()` and `decode()` functions.
+
+```dart
+import 'package:crypto/crypto.dart';
+
+// String we want to hash and encode with Multihash.
+String input = "Hello World";
+
+// Converting the input string to an array of bytes
+List<int> bytes = utf8.encode(input);
+
+// Hashing the string using the SHA-256 algorithm using the `crypto` package
+Digest digest = sha256.convert(bytes);
+Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
+
+// Encoding the hash digest with the Multihash standard.
+Uint8List encoded_with_multihash_array = encode('sha2-256', inputByteArray, null);
+
+// If we want to decode a Multihash-encoded hash, simply use `decode`.
+MultihashInfo decodedObj = decode(encodedObj);
+```
+
+If we were to inspect the `decodedObj`, 
+we would get access to the following info.
+
+```dart
+{
+    "code": 0x12, 
+    "length": 32,
+    "digest": [165, 145, 166, 212, 11, 244, 32, 64, 74, 1, 23, 51, 207, 183, 177, 144, 214, 44, 101, 191, 11, 205, 163, 43, 87, 178, 119, 217, 173, 159, 20, 110],
+    "hashFunctionname": "sha2-256",
+}
+```
+
+This is the info that follows the 
+[`Multihash format`](https://multiformats.io/multihash/#the-multihash-format)
+standard.
+
+## Supported algorithms
+The list of canonical algorithms
+can be found on the
+[multiformat's multicodec](https://github.com/multiformats/multicodec/blob/master/table.csv)
+repo.
+This package tries to support
+as many hash functions as possible.
+If you want to check
+how many are currently supported, 
+do check the [`lib/src/constants.dart](/lib/src/constants.dart)
+file for a list of these.
+
+# Contribute
+If you have any questions 
+or have suggestions to improve this package,
+don't hesitate and 
+[open an issue](https://github.com/dwyl/dart_multihash/issues).
+
+# Recomended reading
+If you are wanting to know more about Multihashing
+why it is needed and how the format works,
+check the official guidelines (https://multiformats.io/multihash/)
+
+If you are looking for a *visual example*
+of how Multihash formatting works,
+check the following https://github.com/multiformats/multihash#visual-examples
+
+# License
+The library is available as open source 
+under the terms of the 
+[MIT License](https://opensource.org/licenses/MIT).
+
