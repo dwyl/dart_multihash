@@ -1,16 +1,3 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
 # dart_multihash
 
 This is an implementation of the 
@@ -19,6 +6,7 @@ standard in Dart.
 This package provides an extensible representation of cryptographic hashes.
 
 # Install
+
 To install `dart_multihash`, simply run the following command.
 
 ```elixir
@@ -76,6 +64,7 @@ This is the info that follows the
 standard.
 
 ## Supported algorithms
+
 The list of canonical algorithms
 can be found on the
 [multiformat's multicodec](https://github.com/multiformats/multicodec/blob/master/table.csv)
@@ -88,12 +77,14 @@ do check the [`lib/src/constants.dart](/lib/src/constants.dart)
 file for a list of these.
 
 # Contribute
+
 If you have any questions 
 or have suggestions to improve this package,
 don't hesitate and 
 [open an issue](https://github.com/dwyl/dart_multihash/issues).
 
 # Recomended reading
+
 If you are wanting to know more about Multihashing
 why it is needed and how the format works,
 check the official guidelines (https://multiformats.io/multihash/)
@@ -103,6 +94,7 @@ of how Multihash formatting works,
 check the following https://github.com/multiformats/multihash#visual-examples
 
 # License
+
 The library is available as open source 
 under the terms of the 
 [MIT License](https://opensource.org/licenses/MIT).
