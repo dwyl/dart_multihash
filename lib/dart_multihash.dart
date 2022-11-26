@@ -9,8 +9,12 @@ import 'src/models.dart';
 
 export 'dart_multihash.dart' show encode, decode;
 
+/// Multihash class which allows encoding and decoding
+/// hash strings.
+class Multihash {
+
 /// Encodes a digest with a passed hash function type.
-Uint8List encode(String hashType, Uint8List digest, int? length) {
+static Uint8List encode(String hashType, Uint8List digest, int? length) {
   // Checking if hash function type is supported
   if (!supportedHashFunctions.contains(hashType)) {
     throw UnsupportedError('Unsupported hash function type.');
@@ -35,7 +39,7 @@ Uint8List encode(String hashType, Uint8List digest, int? length) {
 }
 
 /// Decodes an array of bytes into a multihash object.
-MultihashInfo decode(Uint8List bytes) {
+static MultihashInfo decode(Uint8List bytes) {
 
   // Check if the array of bytes is long enough (has to have hash function type, length of digest and digest)
   if (bytes.length < 3) {
@@ -67,3 +71,5 @@ MultihashInfo decode(Uint8List bytes) {
 
   return MultihashInfo(code: decodedCode.res, length: decodedLen.res, hashFunctionName: hashName, digest: bytes);
 }
+}
+
