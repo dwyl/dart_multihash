@@ -63,7 +63,7 @@ This is the info that follows the
 [`Multihash format`](https://multiformats.io/multihash/#the-multihash-format)
 standard.
 
-## Supported algorithms
+## Supported Algorithms
 
 The list of canonical algorithms
 can be found on the
@@ -95,7 +95,7 @@ check the following https://github.com/multiformats/multihash#visual-examples
 
 # License
 
-The library is available as open source 
+The library is available
 under the terms of the 
 [MIT License](https://opensource.org/licenses/MIT).
 

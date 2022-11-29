@@ -22,3 +22,5 @@ doc/api/
 
 # Coverage files
 coverage
+.idea
+.DS_Store

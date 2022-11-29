@@ -20,7 +20,8 @@ class Multihash {
     }
 
     // Function convention info
-    HashFunctionConvention hashInfo = hashTable.firstWhere((obj) => obj.hashFunctionName == hashType);
+    HashFunctionConvention hashInfo = hashTable.firstWhere((obj) =>
+      obj.hashFunctionName == hashType);
 
     // Check if length of digest is correctly defined.
     length ??= digest.length;
@@ -28,7 +29,8 @@ class Multihash {
       throw RangeError('Digest length has to be equal to the specified length.');
     }
 
-    // Building the array of bytes with hash function type, length of digest and digest encoded.
+    // Building the array of bytes with hash function type,
+    // length of digest and digest encoded.
     var b = BytesBuilder();
     b.add(encodeVarint(hashInfo.code));
     b.add(encodeVarint(length));
@@ -39,7 +41,8 @@ class Multihash {
 
   /// Decodes an array of bytes into a multihash object.
   static MultihashInfo decode(Uint8List bytes) {
-    // Check if the array of bytes is long enough (has to have hash function type, length of digest and digest)
+    // Check if the array of bytes is long enough
+    // (has to have hash function type, length of digest and digest)
     if (bytes.length < 3) {
       throw RangeError('Multihash must be greater than 3 bytes.');
     }
@@ -65,7 +68,8 @@ class Multihash {
     }
 
     // Fetch name of hash function type referring to the code
-    String hashName = hashTable.firstWhere((obj) => obj.code == decodedCode.res).hashFunctionName;
+    String hashName = hashTable.firstWhere((obj) =>
+      obj.code == decodedCode.res).hashFunctionName;
 
     return MultihashInfo(code: decodedCode.res, length: decodedLen.res, hashFunctionName: hashName, digest: bytes);
   }
