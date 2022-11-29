@@ -7,10 +7,13 @@ This package provides an extensible representation of cryptographic hashes.
 
 # Install
 
-To install `dart_multihash`, simply run the following command.
+To install `dart_multihash`, 
+simply run the following command,
+depending on the preferred platform.
 
-```elixir
+```sh
 flutter pub add dart_multihash
+dart pub add dart_multihash
 ```
 
 # Usage
