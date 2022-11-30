@@ -1,4 +1,4 @@
-name: Test and Publish to Codecov
+name: Build
 
 on:
   push:

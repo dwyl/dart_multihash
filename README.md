@@ -1,5 +1,7 @@
 # dart_multihash
 
+[![codecov](https://codecov.io/gh/dwyl/dart_multihash/branch/main/graph/badge.svg?token=Wvw2y9Kpbp)](https://codecov.io/gh/dwyl/dart_multihash)
+
 This is an implementation of the 
 [Multihash](https://github.com/multiformats/multihash)
 standard in Dart.
