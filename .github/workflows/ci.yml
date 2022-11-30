@@ -34,8 +34,16 @@ jobs:
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
       - name: Run tests
-        run: dart test
+        run: dart pub run test --coverage
 
-      - name: Upload coverage to codecov
-        run: curl -s https://codecov.io/bash
-        shell: bash
+      # Install and fetching lcov coverage
+      - name: Install coverage tools
+        run: dart pub global activate coverage
+
+      - name: format coverage
+        run: $HOME/.pub-cache/bin/format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
+
+      - uses: codecov/codecov-action@v2
+        with:
+          files: coverage.lcov
+          verbose: true # optional (default = false)
