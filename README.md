@@ -1,5 +1,6 @@
 # dart_multihash
 
+[![build](https://github.com/dwyl/dart_multihash/actions/workflows/ci.yml/badge.svg)](https://github.com/dwyl/dart_multihash/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/dwyl/dart_multihash/branch/main/graph/badge.svg?token=Wvw2y9Kpbp)](https://codecov.io/gh/dwyl/dart_multihash)
 
 This is an implementation of the 
