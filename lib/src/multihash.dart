@@ -1,11 +1,8 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import './multihash/constants.dart';
-import './multihash/varintUtils.dart';
+import 'multihash/varint_utils.dart';
 import './multihash/models.dart';
-
-export 'multihash.dart' show encode, decode;
 
 /// Multihash class which allows encoding and decoding
 /// hash strings.

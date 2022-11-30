@@ -15,19 +15,19 @@ void main() {
     // for the examples used in this test.
 
     // sha2-256 - 256 bits (aka sha256)
-    Uint8List sha256_array = Uint8List.fromList(hex.decode('122041dd7b6443542e75701aa98a0c235951a28a0d851b11564d20022ab11d2589a8'));
-    MultihashInfo decoded_sha256 = Multihash.decode(sha256_array);
-    expect(decoded_sha256.hashFunctionName, equals('sha2-256'));
-    expect(decoded_sha256.length, equals(0x20));
-    expect(decoded_sha256.code, equals(0x12));
+    Uint8List sha256Array = Uint8List.fromList(hex.decode('122041dd7b6443542e75701aa98a0c235951a28a0d851b11564d20022ab11d2589a8'));
+    MultihashInfo decodedSha256 = Multihash.decode(sha256Array);
+    expect(decodedSha256.hashFunctionName, equals('sha2-256'));
+    expect(decodedSha256.length, equals(0x20));
+    expect(decodedSha256.code, equals(0x12));
 
     // blake2b-512 - 512 bits
-    Uint8List blake2b_512_array = Uint8List.fromList(hex.decode(
+    Uint8List blake2b512Array = Uint8List.fromList(hex.decode(
         'c0e40240d91ae0cb0e48022053ab0f8f0dc78d28593d0f1c13ae39c9b169c136a779f21a0496337b6f776a73c1742805c1cc15e792ddb3c92ee1fe300389456ef3dc97e2'));
-    MultihashInfo decoded_blake2b_512 = Multihash.decode(blake2b_512_array);
-    expect(decoded_blake2b_512.hashFunctionName, equals('blake2b-512'));
-    expect(decoded_blake2b_512.length, equals(0x40));
-    expect(decoded_blake2b_512.code, equals(0xb240));
+    MultihashInfo decodedBlake2b512 = Multihash.decode(blake2b512Array);
+    expect(decodedBlake2b512.hashFunctionName, equals('blake2b-512'));
+    expect(decodedBlake2b512.length, equals(0x40));
+    expect(decodedBlake2b512.code, equals(0xb240));
   });
 
   test('encoding and decoding a string', () {
