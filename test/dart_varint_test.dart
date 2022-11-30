@@ -1,7 +1,8 @@
-import 'package:dart_multihash/src/varintUtils.dart';
+import 'dart:typed_data';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:dart_multihash/src/multihash/varintUtils.dart';
+import 'package:test/test.dart';
+import 'package:collection/collection.dart';
 
 void main() {
   test('encoding varint', () {
@@ -9,12 +10,12 @@ void main() {
     Uint8List expected_output = Uint8List.fromList([232, 7]); // decimal 1000 is equivalent to [232, 7] in bytes array
 
     Uint8List output = encodeVarint(value);
-
-    expect(listEquals(expected_output, output), true);
+    
+    Function eq = const ListEquality().equals;
+    expect(eq(expected_output, output), true);
   });
 
   test('decoding varint', () {
-
     // The following is input byte array and the correspondent value.
     int inputValue = 3463580742760;
     Uint8List inputValueInByteArray = Uint8List.fromList([232, 232, 255, 235, 230, 100]);

@@ -1,7 +1,7 @@
 import 'dart:math' show pow;
+import 'dart:typed_data';
 
 import 'package:buffer/buffer.dart';
-import 'package:flutter/foundation.dart';
 
 import 'models.dart';
 

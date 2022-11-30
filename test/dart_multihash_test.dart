@@ -1,10 +1,11 @@
 import 'dart:convert';
+import 'dart:typed_data';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
-import 'package:dart_multihash/src/models.dart';
+import 'package:test/test.dart';
+import 'package:collection/collection.dart';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:dart_multihash/src/multihash/models.dart';
 
 import 'package:dart_multihash/dart_multihash.dart';
 
@@ -39,7 +40,8 @@ void main() {
     Uint8List encodedObj = Multihash.encode('sha2-256', inputByteArray);
     MultihashInfo decodedObj = Multihash.decode(encodedObj);
 
-    expect(listEquals(decodedObj.digest, inputByteArray), true);
+    Function eq = const ListEquality().equals;
+    expect(eq(decodedObj.digest, inputByteArray), true);
   });
 
   test('encoding with an unsupported hash function type', () {

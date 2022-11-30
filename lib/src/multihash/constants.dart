@@ -4,7 +4,7 @@ import 'models.dart';
 // https://github.com/multiformats/multicodec/blob/master/table.csv
 /// Table with all the hash functions, code and producing digest lengths.
 /// It is the convention behind the [`Multihash format`](https://multiformats.io/multihash/#the-multihash-format).
-/// 
+///
 /// Original data from https://github.com/multiformats/multicodec/blob/master/table.csv.
 const List<HashFunctionConvention> hashTable = [
   HashFunctionConvention(code: 0x12, length: 0x20, hashFunctionName: 'sha2-256'),
@@ -343,7 +343,8 @@ const List<HashFunctionConvention> hashTable = [
   HashFunctionConvention(code: 0xb3e0, length: 0x80, hashFunctionName: 'Skein1024-1024'),
 ];
 
-/// Array of supported hash function names. 
+/// Array of supported hash function names.
 final supportedHashFunctions = hashTable.map((e) => e.hashFunctionName);
+
 /// Array of supported hash codes found in the [`Multihash format`](https://multiformats.io/multihash/#the-multihash-format).
 final supportedHashCodes = hashTable.map((e) => e.code);
