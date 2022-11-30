@@ -79,13 +79,14 @@ This package tries to support
 as many hash functions as possible.
 If you want to check
 how many are currently supported, 
-do check the [`lib/src/constants.dart](/lib/src/constants.dart)
+do check the [`lib/src/constants.dart`](https://github.com/dwyl/dart_multihash/blob/main/lib/src/multihash/constants.dart)
 file for a list of these.
 
 # Contribute
 
 If you have any questions 
-or have suggestions to improve this package,
+or have suggestions on 
+how to improve this package,
 don't hesitate and 
 [open an issue](https://github.com/dwyl/dart_multihash/issues).
 
@@ -93,7 +94,7 @@ don't hesitate and
 
 If you are wanting to know more about Multihashing
 why it is needed and how the format works,
-check the official guidelines (https://multiformats.io/multihash/)
+check the official guidelines https://multiformats.io/multihash/
 
 If you are looking for a *visual example*
 of how Multihash formatting works,
