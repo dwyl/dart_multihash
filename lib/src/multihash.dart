@@ -64,6 +64,6 @@ class Multihash {
     // Fetch name of hash function type referring to the code
     String hashName = codecTable.firstWhere((obj) => obj.code == decodedCode.res).name;
 
-    return MultihashInfo(code: decodedCode.res, length: decodedLen.res, hashFunctionName: hashName, digest: bytes);
+    return MultihashInfo(code: decodedCode.res, length: decodedLen.res, name: hashName, digest: bytes);
   }
 }
