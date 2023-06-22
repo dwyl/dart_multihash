@@ -61,7 +61,7 @@ we would get access to the following info.
     "code": 0x12, 
     "length": 32,
     "digest": [165, 145, 166, 212, 11, 244, 32, 64, 74, 1, 23, 51, 207, 183, 177, 144, 214, 44, 101, 191, 11, 205, 163, 43, 87, 178, 119, 217, 173, 159, 20, 110],
-    "hashFunctionname": "sha2-256",
+    "name": "sha2-256",
 }
 ```
 
@@ -90,7 +90,7 @@ how to improve this package,
 don't hesitate and 
 [open an issue](https://github.com/dwyl/dart_multihash/issues).
 
-# Recomended reading
+# Recommended reading
 
 If you are wanting to know more about Multihashing
 why it is needed and how the format works,
