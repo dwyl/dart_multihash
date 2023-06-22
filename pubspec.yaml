@@ -6,7 +6,7 @@ repository: https://github.com/dwyl/dart_multihash
 issue_tracker: https://github.com/dwyl/dart_multihash/issues
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=2.18.4 <4.0.0'
 
 dependencies:
   buffer: ^1.1.1
