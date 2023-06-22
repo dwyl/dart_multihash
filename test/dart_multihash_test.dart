@@ -111,7 +111,7 @@ void main() {
     Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
     Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray);
-    encodedArray[0] = 0; // adding unsupported code
+    encodedArray[0] = -1; // adding unsupported code
 
     expect(() => Multihash.decode(encodedArray), throwsA(TypeMatcher<UnsupportedError>()));
   });
