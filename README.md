@@ -90,7 +90,7 @@ how to improve this package,
 don't hesitate and 
 [open an issue](https://github.com/dwyl/dart_multihash/issues).
 
-# Recomended reading
+# Recommended reading
 
 If you are wanting to know more about Multihashing
 why it is needed and how the format works,

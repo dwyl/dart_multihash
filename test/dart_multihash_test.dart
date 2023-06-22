@@ -129,7 +129,7 @@ void main() {
     expect(() => Multihash.decode(encodedArray), throwsA(TypeMatcher<RangeError>()));
   });
 
-  test('decoding with incompatible multihash length paramenter and digest\'s', () {
+  test('decoding with incompatible multihash length parameter and digest\'s', () {
     String input = "Hello World";
 
     List<int> bytes = utf8.encode(input); // data being hashed
