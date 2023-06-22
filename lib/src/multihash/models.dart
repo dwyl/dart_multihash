@@ -1,13 +1,13 @@
-/// Class with information regarding the [hashFunctionName], [length] of the producing digest
+/// Class with information regarding the [name], [length] of the producing digest
 /// and the [code] that identifies it.
 ///
 /// It holds multiformat convention data used in the `hashTable` constant.
-class HashFunctionConvention {
+class Codec {
   final int code;
   final int length;
-  final String hashFunctionName;
+  final String name;
 
-  const HashFunctionConvention({required this.code, required this.length, required this.hashFunctionName});
+  const Codec({required this.code, required this.length, required this.name});
 }
 
 /// Class that holds information regarding a digest
@@ -15,11 +15,11 @@ class HashFunctionConvention {
 /// (hash function name, hash function code, length of digest and [digest])
 ///
 /// This class is to return information to the user after decoding.
-class MultihashInfo extends HashFunctionConvention {
+class MultihashInfo extends Codec {
   final List<int> digest;
 
   const MultihashInfo({required code, required length, required hashFunctionName, required this.digest})
-      : super(code: code, length: length, hashFunctionName: hashFunctionName);
+      : super(code: code, length: length, name: hashFunctionName);
 }
 
 /// Util class used to fetch the leading variable integer of a stream/array of bytes.
