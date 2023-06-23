@@ -6,3 +6,8 @@
 
 * Updates the `Multicodecs` list.
 * Renamed `MultihashInfo`'s field from `hashFunctionname` to `name`.
+
+## 0.2.0
+
+* `MultiCodec` list is now publicly accessible.
+* `MultihashInfo` class now outputs the correct information.
