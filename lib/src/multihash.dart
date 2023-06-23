@@ -15,7 +15,7 @@ class Multihash {
     }
 
     // Function convention info
-    Codec hashInfo = codecTable.firstWhere((obj) => obj.name == hashType);
+    MultiCodec hashInfo = codecTable.firstWhere((obj) => obj.name == hashType);
 
     // Check if length of digest is correctly defined.
     length ??= digest.length;
@@ -34,6 +34,7 @@ class Multihash {
   }
 
   /// Decodes an array of bytes into a multihash object.
+  /// See https://cid.ipfs.tech/#bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi to better understand what each varint means.
   static MultihashInfo decode(Uint8List bytes) {
     // Check if the array of bytes is long enough
     // (has to have hash function type, length of digest and digest)
@@ -64,6 +65,6 @@ class Multihash {
     // Fetch name of hash function type referring to the code
     String hashName = codecTable.firstWhere((obj) => obj.code == decodedCode.res).name;
 
-    return MultihashInfo(code: decodedCode.res, length: decodedLen.res, name: hashName, digest: bytes);
+    return MultihashInfo(code: decodedCode.res, size: decodedLen.res, name: hashName, digest: bytes);
   }
 }
