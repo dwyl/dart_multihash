@@ -1,6 +1,6 @@
 name: dart_multihash
 description: A dart-lang implementation of the Multihash protocol.
-version: 0.1.0
+version: 0.2.0
 homepage: https://github.com/dwyl/dart_multihash
 repository: https://github.com/dwyl/dart_multihash
 issue_tracker: https://github.com/dwyl/dart_multihash/issues
@@ -16,4 +16,5 @@ dev_dependencies:
   crypto: ^3.0.2
   convert: ^3.1.1
   test: ^1.24.0
+  base32: 2.1.3
   collection: ^1.17.0
