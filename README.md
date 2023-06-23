@@ -6,7 +6,8 @@
 This is an implementation of the 
 [Multihash](https://github.com/multiformats/multihash)
 standard in Dart.
-This package provides an extensible representation of cryptographic hashes.
+This package provides an extensible representation of cryptographic hashes
+and a list of [multicodecs](https://github.com/multiformats/multicodec) for those who find them useful.
 
 # Install
 
@@ -47,10 +48,10 @@ Digest digest = sha256.convert(bytes);
 Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
 // Encoding the hash digest with the Multihash standard.
-Uint8List encoded_with_multihash_array = encode('sha2-256', inputByteArray);
+Uint8List encodedObj = Multihash.encode('sha2-256', inputByteArray);
 
 // If we want to decode a Multihash-encoded hash, simply use `decode`.
-MultihashInfo decodedObj = decode(encodedObj);
+MultihashInfo decodedObj = Multihash.decode(encodedObj);
 ```
 
 If we were to inspect the `decodedObj`, 
@@ -69,6 +70,14 @@ This is the info that follows the
 [`Multihash format`](https://multiformats.io/multihash/#the-multihash-format)
 standard.
 
+- `digest` is the digest of the multihash.
+- `size` is the length of the digest.
+- `name` is the name of the hash function.
+- `code` is the code of the hash function.
+
+We recommend you check https://cid.ipfs.tech/#bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi
+to inspect a CID and see these parameters explained.
+
 ## Supported Algorithms
 
 The list of canonical algorithms
@@ -81,6 +90,13 @@ If you want to check
 how many are currently supported, 
 do check the [`lib/src/constants.dart`](https://github.com/dwyl/dart_multihash/blob/main/lib/src/multihash/constants.dart)
 file for a list of these.
+
+If you want access to these codecs,
+you can use `Multicodec.list()`.
+
+```dart
+List<MultiCodec> list = MultiCodecs.list();
+```
 
 # Contribute
 

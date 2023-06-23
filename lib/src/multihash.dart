@@ -68,3 +68,7 @@ class Multihash {
     return MultihashInfo(code: decodedCode.res, size: decodedLen.res, name: hashName, digest: bytes);
   }
 }
+
+class MultiCodecs {
+  static List<MultiCodec> list() => codecTable;
+}
