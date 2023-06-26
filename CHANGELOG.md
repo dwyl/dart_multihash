@@ -11,3 +11,7 @@
 
 * `MultiCodec` list is now publicly accessible.
 * `MultihashInfo` class now outputs the correct information.
+
+## 0.2.1
+
+* Fixed to be compatible with Flutter for Web.
