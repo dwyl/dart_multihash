@@ -24,9 +24,9 @@ Uint8List encodeVarint(int value) {
   ByteDataWriter writer = ByteDataWriter();
 
   do {
-    int temp = value & 0x7F; //0x7F = 01111111
+    int temp = value & 0x7F; // 0x7F = 01111111
 
-    value = value >> 7;
+    value = value >> 7; // unsigned bit-right shift
 
     if (value != 0) {
       temp |= 0x80;
