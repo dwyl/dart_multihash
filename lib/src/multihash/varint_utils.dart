@@ -6,7 +6,7 @@ import 'package:buffer/buffer.dart';
 import 'models.dart';
 
 /// Maximum safe integer in JavaScript. (2^53)
-const _maxIntegerJS = 9007199254740992;
+const _maxIntegerJS = 9007199254740991;
 
 /// Converts an int value to a varint (in Dart this is expressed as Uint8List - an array of bytes)
 /// This is an implementation of varint (changed for unsigned ints) based of https://github.com/fmoo/python-varint/blob/master/varint.py
