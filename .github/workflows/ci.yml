@@ -30,6 +30,10 @@ jobs:
       - name: Analyze project source
         run: dart analyze
 
+      # Check https://github.com/dwyl/dart_multihash/issues/9.
+      - name: Check if build is compilable to web
+        run: flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
+
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
