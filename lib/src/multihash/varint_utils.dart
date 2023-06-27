@@ -12,18 +12,29 @@ const _maxIntegerJS = 9007199254740991;
 /// This is an implementation of varint (changed for unsigned ints) based of https://github.com/fmoo/python-varint/blob/master/varint.py
 /// that is changed for unsigned integers.
 Uint8List encodeVarint(int value) {
+  // Ensure that the value is within JavaScript's safe integer range.
+  if (value < 0 || value >= _maxIntegerJS) {
+    throw ArgumentError.value(
+      value,
+      'value',
+      'must be a non-negative integer less than $_maxIntegerJS',
+    );
+  }
+
   ByteDataWriter writer = ByteDataWriter();
 
   do {
-    int temp = value & 0x7F; //0x7F = 01111111
+    int temp = value & 0x7F; // 0x7F = 01111111
 
-    value = (value >> 7) & 0x01FFFFFFFFFFFFFF; // unsigned bit-right shift
+    value = value >> 7; // unsigned bit-right shift
 
     if (value != 0) {
       temp |= 0x80;
     }
+
     writer.writeUint8(temp.toInt());
   } while (value != 0);
+
   return writer.toBytes();
 }
 
