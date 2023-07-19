@@ -15,3 +15,8 @@
 ## 0.2.1
 
 * Fixed to be compatible with Flutter for Web.
+
+## 1.0.0
+
+* `encode` returns `MultihashInfo`.
+* `MultihashInfo` can be translated to bytes with `toBytes()`.
