@@ -48,13 +48,14 @@ Digest digest = sha256.convert(bytes);
 Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
 // Encoding the hash digest with the Multihash standard.
-Uint8List encodedObj = Multihash.encode('sha2-256', inputByteArray);
+MultihashInfo encodedObj = Multihash.encode('sha2-256', inputByteArray);
+UInt8List encodedBytes = encodedObj.toBytes();
 
 // If we want to decode a Multihash-encoded hash, simply use `decode`.
-MultihashInfo decodedObj = Multihash.decode(encodedObj);
+MultihashInfo decodedObj = Multihash.decode(encodedBytes);
 ```
 
-If we were to inspect the `decodedObj`, 
+If we were to inspect `MultihashInfo`, 
 we would get access to the following info.
 
 ```dart
@@ -75,7 +76,8 @@ standard.
 - `name` is the name of the hash function.
 - `code` is the code of the hash function.
 
-We recommend you check https://cid.ipfs.tech/#bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi
+We recommend checking:
+https://cid.ipfs.tech/#bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi
 to inspect a CID and see these parameters explained.
 
 ## Supported Algorithms
