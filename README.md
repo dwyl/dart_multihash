@@ -76,7 +76,8 @@ standard.
 - `name` is the name of the hash function.
 - `code` is the code of the hash function.
 
-We recommend you checking https://cid.ipfs.tech/#bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi
+We recommend checking:
+https://cid.ipfs.tech/#bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi
 to inspect a CID and see these parameters explained.
 
 ## Supported Algorithms
