@@ -8,7 +8,7 @@ import './multihash/models.dart';
 /// hash strings.
 class Multihash {
   /// Encodes a digest with a passed hash function type.
-  static Uint8List encode(String hashType, Uint8List digest, {int? length}) {
+  static MultihashInfo encode(String hashType, Uint8List digest, {int? length}) {
     // Checking if hash function type is supported
     if (!supportedHashFunctions.contains(hashType)) {
       throw UnsupportedError('Unsupported hash function type.');
@@ -23,14 +23,7 @@ class Multihash {
       throw RangeError('Digest length has to be equal to the specified length.');
     }
 
-    // Building the array of bytes with hash function type,
-    // length of digest and digest encoded.
-    var b = BytesBuilder();
-    b.add(encodeVarint(hashInfo.code));
-    b.add(encodeVarint(length));
-    b.add(digest);
-
-    return b.toBytes();
+    return MultihashInfo(code: hashInfo.code, name: hashInfo.name, digest: digest, size: length);
   }
 
   /// Decodes an array of bytes into a multihash object.

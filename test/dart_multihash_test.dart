@@ -39,7 +39,7 @@ void main() {
     Digest digest = sha256.convert(bytes);
     Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
-    Uint8List encodedObj = Multihash.encode('sha2-256', inputByteArray);
+    Uint8List encodedObj = Multihash.encode('sha2-256', inputByteArray).toBytes();
     MultihashInfo decodedObj = Multihash.decode(encodedObj);
 
     Function eq = const ListEquality().equals;
@@ -73,7 +73,7 @@ void main() {
     Digest digest = sha256.convert(bytes);
     Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
-    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray);
+    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray).toBytes();
     Uint8List splicedInvalidEncodedArray = encodedArray.sublist(0, 2);
 
     expect(() => Multihash.decode(splicedInvalidEncodedArray), throwsA(TypeMatcher<RangeError>()));
@@ -86,7 +86,7 @@ void main() {
     Digest digest = sha256.convert(bytes);
     Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
-    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray);
+    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray).toBytes();
     Uint8List splicedInvalidEncodedArray = encodedArray.sublist(0, 2);
 
     expect(() => Multihash.decode(splicedInvalidEncodedArray), throwsA(TypeMatcher<RangeError>()));
@@ -99,7 +99,7 @@ void main() {
     Digest digest = sha256.convert(bytes);
     Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
-    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray);
+    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray).toBytes();
     Uint8List splicedInvalidEncodedArray = encodedArray.sublist(0, 2);
 
     expect(() => Multihash.decode(splicedInvalidEncodedArray), throwsA(TypeMatcher<RangeError>()));
@@ -112,7 +112,7 @@ void main() {
     Digest digest = sha256.convert(bytes);
     Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
-    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray);
+    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray).toBytes();
     encodedArray[0] = -1; // adding unsupported code
 
     expect(() => Multihash.decode(encodedArray), throwsA(TypeMatcher<UnsupportedError>()));
@@ -125,7 +125,7 @@ void main() {
     Digest digest = sha256.convert(bytes);
     Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
-    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray);
+    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray).toBytes();
     encodedArray[1] = 0; // adding unsupported code
 
     expect(() => Multihash.decode(encodedArray), throwsA(TypeMatcher<RangeError>()));
@@ -138,7 +138,7 @@ void main() {
     Digest digest = sha256.convert(bytes);
     Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
-    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray);
+    Uint8List encodedArray = Multihash.encode('sha2-256', inputByteArray).toBytes();
     encodedArray[1] = 1; // adding wrong length
 
     expect(() => Multihash.decode(encodedArray), throwsA(TypeMatcher<RangeError>()));
