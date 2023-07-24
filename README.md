@@ -49,7 +49,7 @@ Uint8List inputByteArray = Uint8List.fromList(digest.bytes);
 
 // Encoding the hash digest with the Multihash standard.
 MultihashInfo encodedObj = Multihash.encode('sha2-256', inputByteArray);
-UInt8List encodedBytes = encodedObj.toBytes();
+Uint8List encodedBytes = encodedObj.toBytes();
 
 // If we want to decode a Multihash-encoded hash, simply use `decode`.
 MultihashInfo decodedObj = Multihash.decode(encodedBytes);

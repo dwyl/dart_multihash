@@ -20,3 +20,8 @@
 
 * `encode` returns `MultihashInfo`.
 * `MultihashInfo` can be translated to bytes with `toBytes()`.
+
+## 1.0.1
+
+* formatting code.
+* exporting relevant public models `MultihashInfo` and `MultiCodec`.

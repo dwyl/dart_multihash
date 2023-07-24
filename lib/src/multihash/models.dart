@@ -26,11 +26,14 @@ class MultihashInfo {
   final String name;
   final int code;
 
-  const MultihashInfo({required this.code, required this.name, required this.digest, required this.size});
+  const MultihashInfo(
+      {required this.code,
+      required this.name,
+      required this.digest,
+      required this.size});
 
   /// Builds the array of bytes with hash function type, length of digest and digest.
   Uint8List toBytes() {
-
     var b = BytesBuilder();
     b.add(encodeVarint(code));
     b.add(encodeVarint(size));
@@ -38,15 +41,4 @@ class MultihashInfo {
 
     return b.toBytes();
   }
-}
-
-/// Util class used to fetch the leading variable integer of a stream/array of bytes.
-///
-/// [res] refers to the leading byte converted to an integer
-/// and [numBytesRead] refers to the number of bytes that it occupies in the array of bytes.
-class DecodedVarInt {
-  final int res;
-  final int numBytesRead;
-
-  DecodedVarInt({required this.res, required this.numBytesRead});
 }

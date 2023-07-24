@@ -8,7 +8,8 @@ import './multihash/models.dart';
 /// hash strings.
 class Multihash {
   /// Encodes a digest with a passed hash function type.
-  static MultihashInfo encode(String hashType, Uint8List digest, {int? length}) {
+  static MultihashInfo encode(String hashType, Uint8List digest,
+      {int? length}) {
     // Checking if hash function type is supported
     if (!supportedHashFunctions.contains(hashType)) {
       throw UnsupportedError('Unsupported hash function type.');
@@ -20,10 +21,12 @@ class Multihash {
     // Check if length of digest is correctly defined.
     length ??= digest.length;
     if (length != digest.length) {
-      throw RangeError('Digest length has to be equal to the specified length.');
+      throw RangeError(
+          'Digest length has to be equal to the specified length.');
     }
 
-    return MultihashInfo(code: hashInfo.code, name: hashInfo.name, digest: digest, size: length);
+    return MultihashInfo(
+        code: hashInfo.code, name: hashInfo.name, digest: digest, size: length);
   }
 
   /// Decodes an array of bytes into a multihash object.
@@ -38,7 +41,8 @@ class Multihash {
     // Decode code of hash function type
     var decodedCode = decodeVarint(bytes, null);
     if (!supportedHashCodes.contains(decodedCode.res)) {
-      throw UnsupportedError('Multihash unknown function code: 0x${decodedCode.res.toRadixString(16)}');
+      throw UnsupportedError(
+          'Multihash unknown function code: 0x${decodedCode.res.toRadixString(16)}');
     }
 
     bytes = bytes.sublist(decodedCode.numBytesRead);
@@ -56,9 +60,14 @@ class Multihash {
     }
 
     // Fetch name of hash function type referring to the code
-    String hashName = codecTable.firstWhere((obj) => obj.code == decodedCode.res).name;
+    String hashName =
+        codecTable.firstWhere((obj) => obj.code == decodedCode.res).name;
 
-    return MultihashInfo(code: decodedCode.res, size: decodedLen.res, name: hashName, digest: bytes);
+    return MultihashInfo(
+        code: decodedCode.res,
+        size: decodedLen.res,
+        name: hashName,
+        digest: bytes);
   }
 }
 
